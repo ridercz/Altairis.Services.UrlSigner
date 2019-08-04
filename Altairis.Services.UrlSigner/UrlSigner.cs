@@ -23,7 +23,7 @@ namespace Altairis.Services.UrlSigner {
             if (url == null) throw new ArgumentNullException(nameof(url));
             if (string.IsNullOrWhiteSpace(url)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(url));
 
-			var baseUrl = url.RemoveFragment(out var fragment);
+            var baseUrl = url.RemoveFragment(out var fragment);
 
             // Convert string to array of bytes
             var data = Encoding.UTF8.GetBytes(baseUrl);
@@ -34,9 +34,9 @@ namespace Altairis.Services.UrlSigner {
             // Convert it to URL-safe Base64
             var sigString = Convert.ToBase64String(sigData).Replace('+', '-').Replace('/', '_');
 
-			// Append signature
-			var separator = baseUrl.Contains("?") ? "&": "?";
-			return $"{baseUrl}{separator}sig={sigString}{fragment}";
+            // Append signature
+            var separator = baseUrl.Contains("?") ? "&": "?";
+            return $"{baseUrl}{separator}sig={sigString}{fragment}";
         }
 
         public virtual bool Verify(string url) {
@@ -45,7 +45,7 @@ namespace Altairis.Services.UrlSigner {
 
             try {
                 // Try to parse the signed URL
-				var urlString = url.RemoveFragment().RemoveLastParameter("sig", out var sigString);
+                var urlString = url.RemoveFragment().RemoveLastParameter("sig", out var sigString);
                 sigString = sigString.Replace('-', '+').Replace('_', '/');
 
                 // Convert to byte array

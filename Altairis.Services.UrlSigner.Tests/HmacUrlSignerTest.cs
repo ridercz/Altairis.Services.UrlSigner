@@ -22,17 +22,17 @@ namespace Altairis.Services.UrlSigner.Tests {
             Assert.True(signer.Verify(signedString));
         }
 
-		[Fact]
-		public static void RoundtripStringWithFragment() {
-			const string origUrl = "https://www.example.com#myFragment";
+        [Fact]
+        public static void RoundtripStringWithFragment() {
+            const string origUrl = "https://www.example.com#myFragment";
 
-			var signer = new HmacUrlSigner<HMACSHA512>(Key);
-			var signedString = signer.Sign(origUrl);
-			Assert.True(signer.Verify(signedString));
-			Assert.EndsWith("#myFragment", signedString); // we want preserve fragment component
+            var signer = new HmacUrlSigner<HMACSHA512>(Key);
+            var signedString = signer.Sign(origUrl);
+            Assert.True(signer.Verify(signedString));
+            Assert.EndsWith("#myFragment", signedString); // we want preserve fragment component
 
-			var signedStringWithoutFragment = signedString.Replace("#myFragment", "");
-			Assert.True(signer.Verify(signedStringWithoutFragment));
-		}
+            var signedStringWithoutFragment = signedString.Replace("#myFragment", "");
+            Assert.True(signer.Verify(signedStringWithoutFragment));
+        }
     }
 }

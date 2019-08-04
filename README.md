@@ -1,4 +1,4 @@
-[![NuGet Status](https://img.shields.io/nuget/v/Altairis.Services.UrlSigning.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Altairis.Services.UrlSigning/)
+[![NuGet Status](https://img.shields.io/nuget/v/Altairis.Services.UrlSigner.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Altairis.Services.UrlSigner/)
 
 # Altairis.Services.UrlSigner
 URL signing solution for .NET Core

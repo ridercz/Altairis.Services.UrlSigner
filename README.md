@@ -3,6 +3,14 @@
 # Altairis.Services.UrlSigner
 URL signing solution for .NET Core
 
+## Documentation
+
+The following articles describe how the URL signer works. They are available in Czech only for now.
+
+* [Podepisování URL snadno a rychle](https://www.altair.blog/2019/08/url-signer)
+* [Podepisování URL ještì jednou](https://www.altair.blog/2019/08/url-signer-jeste-jednou)
+
+
 ## Contributor Code of Conduct
 
 This project adheres to No Code of Conduct. We are all adults. We accept anyone's contributions. Nothing else matters.

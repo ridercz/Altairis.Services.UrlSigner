@@ -22,8 +22,8 @@ namespace Altairis.UrlSigner.Tests {
         [Fact]
         public static void RoundtripString() {
             var signer = new HmacUrlSigner<HMACSHA512>(Key);
-            var signedUri = signer.Sign(TestString);
-            Assert.True(signer.Verify(signedUri));
+            var signedString = signer.Sign(TestString);
+            Assert.True(signer.Verify(signedString));
         }
 
     }

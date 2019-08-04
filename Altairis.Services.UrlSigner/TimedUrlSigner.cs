@@ -23,7 +23,7 @@ namespace Altairis.Services.UrlSigner {
 
             // Append expiration timestamp
             var expTimeStamp = DateTime.UtcNow.Add(ttl).Subtract(ZeroTime).TotalSeconds;
-            url += (url.Contains("?") ? "&" : "?") + "exp=" + expTimeStamp.ToString();
+            url = url.AppendParameter("exp", expTimeStamp.ToString());
 
             // Sign value with configured signer
             return this.Signer.Sign(url);

@@ -32,6 +32,17 @@ namespace Altairis.Services.UrlSigner {
             }
         }
 
+        internal static string AppendParameter(this string url, string paramName, string paramValue) {
+            if (url == null) throw new ArgumentNullException(nameof(url));
+            if (string.IsNullOrWhiteSpace(url)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(url));
+            if (paramName == null) throw new ArgumentNullException(nameof(paramName));
+            if (string.IsNullOrWhiteSpace(paramName)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(paramName));
+
+            var baseUrl = RemoveFragment(url, out var fragment);
+            var separator = baseUrl.Contains("?") ? "&" : "?";
+            return $"{baseUrl}{separator}{paramName}={paramValue}{fragment}";
+        }
+
         internal static string RemoveFragment(this string url) => RemoveFragment(url, out _);
 
         internal static string RemoveFragment(this string url, out string fragment) {

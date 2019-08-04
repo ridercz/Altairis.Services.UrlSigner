@@ -35,8 +35,7 @@ namespace Altairis.Services.UrlSigner {
             var sigString = Convert.ToBase64String(sigData).Replace('+', '-').Replace('/', '_');
 
             // Append signature
-            var separator = baseUrl.Contains("?") ? "&": "?";
-            return $"{baseUrl}{separator}sig={sigString}{fragment}";
+            return baseUrl.AppendParameter("sig", sigString) + fragment;
         }
 
         public virtual bool Verify(string url) {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Altairis.UrlSigner {
+namespace Altairis.Services.UrlSigner {
     public class NullUrlSigner : IUrlSigner {
 
         public string Sign(string url) => url;

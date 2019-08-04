@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace Altairis.UrlSigner.Tests {
+namespace Altairis.Services.UrlSigner.Tests {
     public class NullUrlSignerTests {
         private static readonly Uri TestUri = new Uri("https://www.example.com/");
         private const string TestString = "https://www.example.com/";

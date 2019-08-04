@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Altairis.UrlSigner {
+namespace Altairis.Services.UrlSigner {
     public abstract class UrlSigner : IUrlSigner {
 
         // Abstract methods to be implemented in derived classes

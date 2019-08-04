@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Altairis.UrlSigner\Altairis.UrlSigner.csproj" />
+    <ProjectReference Include="..\Altairis.Services.UrlSigner\Altairis.Services.UrlSigner.csproj" />
   </ItemGroup>
 
 </Project>

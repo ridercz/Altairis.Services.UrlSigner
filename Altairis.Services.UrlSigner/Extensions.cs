@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Altairis.UrlSigner {
+namespace Altairis.Services.UrlSigner {
     public static class Extensions {
 
         public static TimedUrlSigner ToTimedSigner(this IUrlSigner signer) {

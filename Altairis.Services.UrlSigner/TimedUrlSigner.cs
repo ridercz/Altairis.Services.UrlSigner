@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Altairis.UrlSigner {
+namespace Altairis.Services.UrlSigner {
     public class TimedUrlSigner {
         private static readonly DateTime ZeroTime = new DateTime(2019, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         public IUrlSigner Signer { get; }

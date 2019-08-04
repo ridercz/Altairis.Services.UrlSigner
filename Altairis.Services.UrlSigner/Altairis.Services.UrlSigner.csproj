@@ -9,9 +9,9 @@
     <Description>Library for signing URLs to prevent tampering</Description>
     <Copyright>Copyright (c) Michal A. Valášek - Altairis, 2019</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/ridercz/Altairis.UrlSigner</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/ridercz/Altairis.UrlSigner/master/NuGet-64x64.png</PackageIconUrl>
-    <RepositoryUrl>https://github.com/ridercz/Altairis.UrlSigner.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ridercz/Altairis.Services.UrlSigner</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/ridercz/Altairis.Services.UrlSigner/master/NuGet-64x64.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/ridercz/Altairis.Services.UrlSigner.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>

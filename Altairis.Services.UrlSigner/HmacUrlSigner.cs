@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace Altairis.UrlSigner {
+namespace Altairis.Services.UrlSigner {
     public class HmacUrlSigner<TAlg> : UrlSigner where TAlg : KeyedHashAlgorithm, new() {
         readonly TAlg hmac;
 

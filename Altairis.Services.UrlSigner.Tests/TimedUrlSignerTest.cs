@@ -6,21 +6,23 @@ using Xunit;
 namespace Altairis.Services.UrlSigner.Tests {
     public class TimedUrlSignerTest {
         private static readonly byte[] Key = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07 };
-        private static readonly TimeSpan TestTtl = TimeSpan.FromMilliseconds(100);
+        private static readonly TimeSpan TestTtl = TimeSpan.FromSeconds(1);
         private static readonly Uri TestUri = new Uri("https://www.example.com/");
         private const string TestString = "https://www.example.com/";
 
         [Fact]
-        public static void ImmediateRoundtripUri() {
+        public static async Task ImmediateRoundtripUri() {
             var signer = new TimedUrlSigner(new HmacUrlSigner<HMACSHA512>(Key));
             var signedUri = signer.Sign(TestUri, TestTtl);
+            await Task.Delay((int)TestTtl.TotalMilliseconds / 2);
             Assert.True(signer.Verify(signedUri));
         }
 
         [Fact]
-        public static void ImmediateRoundtripString() {
+        public static async Task ImmediateRoundtripString() {
             var signer = new TimedUrlSigner(new HmacUrlSigner<HMACSHA512>(Key));
             var signedString = signer.Sign(TestString, TestTtl);
+            await Task.Delay((int)TestTtl.TotalMilliseconds / 2);
             Assert.True(signer.Verify(signedString));
         }
 
@@ -28,7 +30,7 @@ namespace Altairis.Services.UrlSigner.Tests {
         public static async Task ExpiredRoundtripUri() {
             var signer = new TimedUrlSigner(new HmacUrlSigner<HMACSHA512>(Key));
             var signedUri = signer.Sign(TestUri, TestTtl);
-            await Task.Delay(TestTtl.Add(TestTtl));
+            await Task.Delay((int)TestTtl.TotalMilliseconds * 2);
             Assert.False(signer.Verify(signedUri));
         }
 
@@ -36,7 +38,7 @@ namespace Altairis.Services.UrlSigner.Tests {
         public static async Task ExpiredRoundtripString() {
             var signer = new TimedUrlSigner(new HmacUrlSigner<HMACSHA512>(Key));
             var signedString = signer.Sign(TestString, TestTtl);
-            await Task.Delay(TestTtl.Add(TestTtl));
+            await Task.Delay((int)TestTtl.TotalMilliseconds * 2);
             Assert.False(signer.Verify(signedString));
         }
 

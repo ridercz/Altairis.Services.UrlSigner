@@ -41,16 +41,21 @@ namespace Altairis.UrlSigner {
             if (url == null) throw new ArgumentNullException(nameof(url));
             if (string.IsNullOrWhiteSpace(url)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(url));
 
-            // Try to parse the signed URL
-            var lastSeparatorIndex = url.LastIndexOfAny("?&".ToCharArray());
-            if (lastSeparatorIndex < 1 || lastSeparatorIndex > url.Length - 6 || !url.Substring(lastSeparatorIndex + 1, 4).Equals("sig=")) return false;
-            var urlString = url.Substring(0, lastSeparatorIndex);
-            var sigString = url.Substring(lastSeparatorIndex + 5).Replace('-', '+').Replace('_', '/');
-            var urlData = Encoding.UTF8.GetBytes(urlString);
-            var sigData = Convert.FromBase64String(sigString);
+            try {
+                // Try to parse the signed URL
+                var urlString = url.RemoveLastParameter("sig", out var sigString);
+                sigString = sigString.Replace('-', '+').Replace('_', '/');
 
-            // Verify signature
-            return this.VerifySignature(urlData, sigData);
+                // Convert to byte array
+                var urlData = Encoding.UTF8.GetBytes(urlString);
+                var sigData = Convert.FromBase64String(sigString);
+
+                // Verify signature
+                return this.VerifySignature(urlData, sigData);
+            }
+            catch (Exception) {
+                return false;
+            }
         }
 
     }
